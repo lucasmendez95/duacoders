@@ -26,6 +26,7 @@ yarn install
 ```
 
 ## 🌍 Configuración
+Crea la BBDD "duacoders" en mysql
 Crea en raíz el archivo `.env` y configura las variables de entorno necesarias.
 
 Ejemplo:
@@ -43,6 +44,8 @@ DB_NAME=duacoders
 ```
 
 ## 🏃 Ejecución
+
+Debido al useo del token JWT será necesario crear un usuario en la base de datos (POST a http://localhost:3000/api/users/register con su correspondiente body) y luego hacer un login (POST a http://localhost:3000/api/auth/login con su correspondiente body) sobre ese usuario para obtener el access_token que se colocará en la cabecera Authorization (Bearer)
 
 ### Desarrollo
 ```bash
@@ -62,14 +65,10 @@ Ejecutar pruebas unitarias:
 npm run test
 ```
 
-Ejecutar pruebas end-to-end:
-```bash
-npm run test:e2e
-```
-
 ## 📜 Endpoints
 
 Por defecto, la API se ejecuta en `http://localhost:3000`. Puedes consultar la documentación Swagger en:
 ```
 http://localhost:3000/api/docs
 ```
+Los logs de error están en la carpeta "logs" en raíz
