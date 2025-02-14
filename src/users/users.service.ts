@@ -10,7 +10,10 @@ export class UsersService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
-
+  // Buscar un usuario por su nombre de usuario
+  async findOneByUsername(username: string): Promise<User | null> {
+    return this.userRepository.findOne({ where: { username } });
+  }
   // Crear un nuevo usuario
   async create(user: Partial<User>): Promise<User> {
     const hashedPassword = bcrypt.hashSync(user.password, 10);
